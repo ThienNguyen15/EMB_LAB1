@@ -62,7 +62,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			}
 		}
 		// 1ms interrupt here
-		counter = (counter + 1)%FREQ_1;
+		counter = (counter + 1)%FREQ_3;
 		if(counter == 0)
 		{
 			led7_Scan();
