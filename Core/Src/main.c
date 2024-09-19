@@ -96,6 +96,7 @@ int main(void)
   MX_TIM2_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
+  int blink = 0;
   system_init();
   led7_SetColon(1);
   /* USER CODE END 2 */
@@ -107,6 +108,15 @@ int main(void)
 	  while(!flag_timer2);
 	  flag_timer2 = 0;
 	  // main task, every 100ms
+	  blink = (blink + 1) % 20;
+	  if(blink >=  10)
+	  {
+		  led7_SetColon(0);
+	  }
+	  else
+	  {
+		  led7_SetColon(1);
+	  }
 	  test_LedDebug();
 	  test_LedY0();
 	  test_LedY1();
@@ -216,10 +226,10 @@ void test_LedY1()
 uint8_t second = 0;
 uint8_t minute = 59;
 uint8_t hour = 23;
-uint8_t minute2 = minute % 10;
-uint8_t minute1 = minute / 10;
-uint8_t hour2 = hour % 10;
-uint8_t hour1 = hour / 10;
+uint8_t minute2 = 0;
+uint8_t minute1 = 0;
+uint8_t hour2 = 0;
+uint8_t hour1 = 0;
 
 void time_update()
 {
@@ -230,16 +240,16 @@ void time_update()
 		if(minute > 59)
 		{
 			minute = 0;
-			minute1 = minute / 10;
-			minute2 = minute % 10;
 			hour++;
 		}
 		if(hour > 23)
 		{
 			hour = 0;
-			hour1 = hour / 10;
-			hour2 = hour % 10;
 		}
+		minute1 = minute / 10;
+		minute2 = minute % 10;
+		hour1 = hour / 10;
+		hour2 = hour % 10;
 	}
 }
 
