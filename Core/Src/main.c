@@ -57,6 +57,7 @@ void test_LedDebug();
 void test_LedY0();
 void test_LedY1();
 void test_7seg();
+void time_update();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -105,10 +106,11 @@ int main(void)
   {
 	  while(!flag_timer2);
 	  flag_timer2 = 0;
-	  // main task, every 50ms
+	  // main task, every 100ms
 	  test_LedDebug();
 	  test_LedY0();
 	  test_LedY1();
+	  time_update();
 	  test_7seg();
     /* USER CODE END WHILE */
 
@@ -162,50 +164,92 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void system_init(){
+void system_init()
+{
 	  HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin, 0);
 	  HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port, OUTPUT_Y1_Pin, 0);
 	  HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 0);
 	  timer_init();
 	  led7_init();
-	  setTimer2(50);
+	  setTimer2(100);
 }
 
 uint8_t count_led_debug = 0;
 uint8_t count_led_Y0 = 0;
 uint8_t count_led_Y1 = 0;
 
-void test_LedDebug(){
+void test_LedDebug()
+{
 	count_led_debug = (count_led_debug + 1)%20;
-	if(count_led_debug == 0){
+	if(count_led_debug == 0)
+	{
 		HAL_GPIO_TogglePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin);
 	}
 }
 
-void test_LedY0(){
-	count_led_Y0 = (count_led_Y0+ 1)%100;
-	if(count_led_Y0 > 40){
+void test_LedY0()
+{
+	count_led_Y0 = (count_led_Y0+ 1)%60;
+	if(count_led_Y0 <= 20)
+	{
 		HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin, 1);
-	} else {
+	}
+	else
+	{
 		HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin, 0);
 	}
 }
 
-void test_LedY1(){
-	count_led_Y1 = (count_led_Y1+ 1)%40;
-	if(count_led_Y1 > 10){
-		HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port, OUTPUT_Y1_Pin, 0);
-	} else {
-		HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y1_Pin, 1);
+void test_LedY1()
+{
+	count_led_Y1 = (count_led_Y1+ 1)%60;
+	if(count_led_Y1 <= 50)
+	{
+		HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port, OUTPUT_Y1_Pin, 1);
+	}
+	else
+	{
+		HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y1_Pin, 0);
 	}
 }
 
-void test_7seg(){
+uint8_t second = 0;
+uint8_t minute = 59;
+uint8_t hour = 23;
+uint8_t minute2 = minute % 10;
+uint8_t minute1 = minute / 10;
+uint8_t hour2 = hour % 10;
+uint8_t hour1 = hour / 10;
+
+void time_update()
+{
+	second = (second+1)%600;
+	if(second == 0)
+	{
+		minute++;
+		if(minute > 59)
+		{
+			minute = 0;
+			minute1 = minute / 10;
+			minute2 = minute % 10;
+			hour++;
+		}
+		if(hour > 23)
+		{
+			hour = 0;
+			hour1 = hour / 10;
+			hour2 = hour % 10;
+		}
+	}
+}
+
+void test_7seg()
+{
 	//write number1 at led index 0 (not show dot)
-	led7_SetDigit(1, 0, 0);
-	led7_SetDigit(5, 1, 0);
-	led7_SetDigit(4, 2, 0);
-	led7_SetDigit(7, 3, 0);
+	led7_SetDigit(hour1, 0, 0);
+	led7_SetDigit(hour2, 1, 0);
+	led7_SetDigit(minute1, 2, 0);
+	led7_SetDigit(minute2, 3, 0);
 }
 /* USER CODE END 4 */
 
