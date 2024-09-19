@@ -103,17 +103,17 @@ int main(void)
   while (1)
   {
 	  count = (count + 1) % 9;
-	  if(count <= 5)
+	  if(count <= 5)		/* RED */
 	  {
 		  HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port, OUTPUT_Y1_Pin, 0);
 		  HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 1);
 	  }
-	  else if(count > 5)
+	  else if(count <= 8)	/* GREEN */
 	  {
 		  HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 0);
 		  HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin, 1);
 	  }
-	  else if(count > 8)
+	  else					/* YELLOW */
 	  {
 		  HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin, 0);
 		  HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port, OUTPUT_Y1_Pin, 1);
