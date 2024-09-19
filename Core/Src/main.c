@@ -108,7 +108,7 @@ int main(void)
 	  else if(count >= 5)
 		  count = - 1;
 	  count++;
-	  HAL_Delay(1000) ;
+	  HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
   }
 }
