@@ -1300,7 +1300,6 @@ void led_shift()
  8000ab6:	b2da      	uxtb	r2, r3
  8000ab8:	4b05      	ldr	r3, [pc, #20]	; (8000ad0 <led_shift+0x6c>)
  8000aba:	701a      	strb	r2, [r3, #0]
-
 	}
 }
  8000abc:	bf00      	nop

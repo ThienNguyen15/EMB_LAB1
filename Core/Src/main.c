@@ -227,7 +227,6 @@ void led_shift()
 		led[2] = led[1];
 		led[1] = led[0];
 		led[0] = temp;
-
 	}
 }
 
