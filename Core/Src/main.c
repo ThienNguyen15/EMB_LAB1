@@ -104,19 +104,16 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  // Main task, every 100ms
 	  while(!flag_timer2);
 	  flag_timer2 = 0;
-	  // main task, every 100ms
+	  led_shift();
+	  test_7seg();
+
 	  test_LedDebug();
 	  test_LedY0();
 	  test_LedY1();
-	  led_shift();
-	  test_7seg();
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
   }
-  /* USER CODE END 3 */
 }
 
 /**
@@ -180,37 +177,27 @@ uint8_t count_led_Y1 = 0;
 
 void test_LedDebug()
 {
-	count_led_debug = (count_led_debug + 1)%20;
+	count_led_debug = (count_led_debug + 1) % 20;
 	if(count_led_debug == 0)
-	{
 		HAL_GPIO_TogglePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin);
-	}
 }
 
 void test_LedY0()
 {
-	count_led_Y0 = (count_led_Y0+ 1)%60;
+	count_led_Y0 = (count_led_Y0 + 1) % 60;
 	if(count_led_Y0 <= 20)
-	{
 		HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin, 1);
-	}
 	else
-	{
 		HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin, 0);
-	}
 }
 
 void test_LedY1()
 {
-	count_led_Y1 = (count_led_Y1+ 1)%60;
+	count_led_Y1 = (count_led_Y1 + 1) % 60;
 	if(count_led_Y1 <= 50)
-	{
 		HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port, OUTPUT_Y1_Pin, 1);
-	}
 	else
-	{
 		HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y1_Pin, 0);
-	}
 }
 
 uint8_t led[4] = {2,5,6,9};

@@ -888,11 +888,11 @@ int main(void)
   led7_SetColon(1);
  8000830:	2001      	movs	r0, #1
  8000832:	f7ff ffcf 	bl	80007d4 <led7_SetColon>
-
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  // Main task, every 100ms
 	  while(!flag_timer2);
  8000836:	bf00      	nop
  8000838:	4b08      	ldr	r3, [pc, #32]	; (800085c <main+0x48>)
@@ -903,17 +903,17 @@ int main(void)
  8000840:	4b06      	ldr	r3, [pc, #24]	; (800085c <main+0x48>)
  8000842:	2200      	movs	r2, #0
  8000844:	801a      	strh	r2, [r3, #0]
-	  // main task, every 100ms
-	  test_LedDebug();
- 8000846:	f000 f891 	bl	800096c <test_LedDebug>
-	  test_LedY0();
- 800084a:	f000 f8b3 	bl	80009b4 <test_LedY0>
-	  test_LedY1();
- 800084e:	f000 f8dd 	bl	8000a0c <test_LedY1>
 	  led_shift();
- 8000852:	f000 f907 	bl	8000a64 <led_shift>
+ 8000846:	f000 f90d 	bl	8000a64 <led_shift>
 	  test_7seg();
- 8000856:	f000 f93d 	bl	8000ad4 <test_7seg>
+ 800084a:	f000 f943 	bl	8000ad4 <test_7seg>
+
+	  test_LedDebug();
+ 800084e:	f000 f88d 	bl	800096c <test_LedDebug>
+	  test_LedY0();
+ 8000852:	f000 f8af 	bl	80009b4 <test_LedY0>
+	  test_LedY1();
+ 8000856:	f000 f8d9 	bl	8000a0c <test_LedY1>
 	  while(!flag_timer2);
  800085a:	e7ec      	b.n	8000836 <main+0x22>
  800085c:	20000042 	.word	0x20000042
@@ -1095,7 +1095,7 @@ void test_LedDebug()
 {
  800096c:	b580      	push	{r7, lr}
  800096e:	af00      	add	r7, sp, #0
-	count_led_debug = (count_led_debug + 1)%20;
+	count_led_debug = (count_led_debug + 1) % 20;
  8000970:	4b0d      	ldr	r3, [pc, #52]	; (80009a8 <test_LedDebug+0x3c>)
  8000972:	781b      	ldrb	r3, [r3, #0]
  8000974:	1c5a      	adds	r2, r3, #1
@@ -1117,12 +1117,10 @@ void test_LedDebug()
  8000994:	781b      	ldrb	r3, [r3, #0]
  8000996:	2b00      	cmp	r3, #0
  8000998:	d103      	bne.n	80009a2 <test_LedDebug+0x36>
-	{
 		HAL_GPIO_TogglePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin);
  800099a:	2110      	movs	r1, #16
  800099c:	4804      	ldr	r0, [pc, #16]	; (80009b0 <test_LedDebug+0x44>)
  800099e:	f000 fdd2 	bl	8001546 <HAL_GPIO_TogglePin>
-	}
 }
  80009a2:	bf00      	nop
  80009a4:	bd80      	pop	{r7, pc}
@@ -1137,7 +1135,7 @@ void test_LedY0()
 {
  80009b4:	b580      	push	{r7, lr}
  80009b6:	af00      	add	r7, sp, #0
-	count_led_Y0 = (count_led_Y0+ 1)%60;
+	count_led_Y0 = (count_led_Y0 + 1) % 60;
  80009b8:	4b11      	ldr	r3, [pc, #68]	; (8000a00 <test_LedY0+0x4c>)
  80009ba:	781b      	ldrb	r3, [r3, #0]
  80009bc:	1c5a      	adds	r2, r3, #1
@@ -1160,17 +1158,13 @@ void test_LedY0()
  80009de:	781b      	ldrb	r3, [r3, #0]
  80009e0:	2b14      	cmp	r3, #20
  80009e2:	d805      	bhi.n	80009f0 <test_LedY0+0x3c>
-	{
 		HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin, 1);
  80009e4:	2201      	movs	r2, #1
  80009e6:	2120      	movs	r1, #32
  80009e8:	4807      	ldr	r0, [pc, #28]	; (8000a08 <test_LedY0+0x54>)
  80009ea:	f000 fd93 	bl	8001514 <HAL_GPIO_WritePin>
-	}
 	else
-	{
 		HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin, 0);
-	}
 }
  80009ee:	e004      	b.n	80009fa <test_LedY0+0x46>
 		HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin, 0);
@@ -1192,7 +1186,7 @@ void test_LedY1()
 {
  8000a0c:	b580      	push	{r7, lr}
  8000a0e:	af00      	add	r7, sp, #0
-	count_led_Y1 = (count_led_Y1+ 1)%60;
+	count_led_Y1 = (count_led_Y1 + 1) % 60;
  8000a10:	4b11      	ldr	r3, [pc, #68]	; (8000a58 <test_LedY1+0x4c>)
  8000a12:	781b      	ldrb	r3, [r3, #0]
  8000a14:	1c5a      	adds	r2, r3, #1
@@ -1215,17 +1209,13 @@ void test_LedY1()
  8000a36:	781b      	ldrb	r3, [r3, #0]
  8000a38:	2b32      	cmp	r3, #50	; 0x32
  8000a3a:	d805      	bhi.n	8000a48 <test_LedY1+0x3c>
-	{
 		HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port, OUTPUT_Y1_Pin, 1);
  8000a3c:	2201      	movs	r2, #1
  8000a3e:	2140      	movs	r1, #64	; 0x40
  8000a40:	4807      	ldr	r0, [pc, #28]	; (8000a60 <test_LedY1+0x54>)
  8000a42:	f000 fd67 	bl	8001514 <HAL_GPIO_WritePin>
-	}
 	else
-	{
 		HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y1_Pin, 0);
-	}
 }
  8000a46:	e004      	b.n	8000a52 <test_LedY1+0x46>
 		HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y1_Pin, 0);
