@@ -8,7 +8,7 @@
 #include "software_timer.h"
 
 #define TIMER_CYCLE_2	1
-#define FREQ_1			5000
+#define FREQ_1			500
 #define FREQ_2			20
 #define FREQ_3			5
 
