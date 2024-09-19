@@ -105,7 +105,7 @@ int main(void)
   {
 	  while(!flag_timer2);
 	  flag_timer2 = 0;
-	  // main task, every 50ms
+	  // main task, every 100ms
 	  test_LedDebug();
 	  test_LedY0();
 	  test_LedY1();
