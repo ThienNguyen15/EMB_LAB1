@@ -903,7 +903,7 @@ int main(void)
  8000840:	4b05      	ldr	r3, [pc, #20]	; (8000858 <main+0x44>)
  8000842:	2200      	movs	r2, #0
  8000844:	801a      	strh	r2, [r3, #0]
-	  // main task, every 50ms
+	  // main task, every 100ms
 	  test_LedDebug();
  8000846:	f000 f88f 	bl	8000968 <test_LedDebug>
 	  test_LedY0();
