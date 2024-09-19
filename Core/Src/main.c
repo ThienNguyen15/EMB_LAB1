@@ -102,10 +102,10 @@ int main(void)
   {
 	  if(count < 2)
 		  HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 1);
-	  else if(count >= 2 && count < 5)
+	  else if(count >= 2 && count <= 6)
 		  HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 0);
-	  else if(count >= 5)
-		  count = - 1;
+	  else if(count > 6)
+		  count = 0;
 	  count++;
 	  HAL_Delay(1000);
   }
