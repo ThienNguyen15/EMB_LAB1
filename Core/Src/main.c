@@ -129,7 +129,7 @@ int main(void)
 		  HAL_GPIO_WritePin(LED_Y1_GPIO_Port , LED_Y1_Pin , 1);
 	  }
 	  count++;
-	  HAL_Delay(1000) ;
+	  HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
   }
 }
