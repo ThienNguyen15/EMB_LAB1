@@ -97,40 +97,28 @@ int main(void)
   /* USER CODE END 2 */
 
   /* Infinite loop */
-  int state = 0;
   int count = 0;
   /* DEBUG_LED: RED, LED_Y0: GREEN, LED_Y1: YELLOW */
-  HAL_GPIO_WritePin( DEBUG_LED_GPIO_Port , DEBUG_LED_Pin , 1);
+  HAL_GPIO_WritePin( DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 1);
   while (1)
   {
-    /* USER CODE END WHILE */
-	  if(state == 0)
+	  count = (count + 1) % 9;
+	  if(count <= 5)
 	  {
-		  if(count >= 5)
-			  state = 1;
-		  HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port , OUTPUT_Y1_Pin , 0);
-		  HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port , DEBUG_LED_Pin , 1);
+		  HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port, OUTPUT_Y1_Pin, 0);
+		  HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 1);
 	  }
-	  else if(state == 1)
+	  else if(count > 5)
 	  {
-		  if(count >= 3)
-			  state = 2;
-		  HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port , DEBUG_LED_Pin , 0);
-		  HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port , OUTPUT_Y0_Pin , 1);
+		  HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 0);
+		  HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin, 1);
 	  }
-	  else if(state == 2)
+	  else if(count > 8)
 	  {
-		  if(count >= 1)
-		  {
-			  state = 0;
-			  count = 0;
-		  }
-		  HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port , OUTPUT_Y0_Pin , 0);
-		  HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port , OUTPUT_Y1_Pin , 1);
+		  HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin, 0);
+		  HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port, OUTPUT_Y1_Pin, 1);
 	  }
-	  count++;
 	  HAL_Delay(1000);
-    /* USER CODE BEGIN 3 */
   }
 }
 
