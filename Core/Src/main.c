@@ -100,16 +100,14 @@ int main(void)
   int count = 0;
   while (1)
   {
-    /* USER CODE END WHILE */
 	  if(count < 2)
-		  HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port , DEBUG_LED_Pin , 1);
+		  HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 1);
 	  else if(count >= 2 && count < 5)
-		  HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port , DEBUG_LED_Pin , 0);
+		  HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 0);
 	  else if(count >= 5)
 		  count = - 1;
 	  count++;
 	  HAL_Delay(1000);
-    /* USER CODE BEGIN 3 */
   }
 }
 
