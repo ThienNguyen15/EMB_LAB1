@@ -181,7 +181,8 @@ void test_LedDebug()	/* RED */
 	count_led_debug = (count_led_debug + 1)%50;
 	if(count_led_debug <= 50)
 	{
-		HAL_GPIO_TogglePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin);
+		HAL_GPIO_WritePin(LED_Y0_GPIO_Port , LED_Y0_Pin , 0);
+		HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port , DEBUG_LED_Pin , 1);
 	}
 }
 
@@ -190,7 +191,8 @@ void test_LedY0()	/* GREEN */
 	count_led_Y0 = (count_led_Y0+ 1)%30;
 	if(count_led_Y0 <= 30)
 	{
-		HAL_GPIO_TogglePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin);
+		HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port , DEBUG_LED_Pin , 0);
+		HAL_GPIO_WritePin(LED_Y0_GPIO_Port , LED_Y0_Pin , 1);
 	}
 }
 
@@ -199,7 +201,8 @@ void test_LedY1()	/* YELLOW */
 	count_led_Y1 = (count_led_Y1+ 1)%10;
 	if(count_led_Y1 <= 10)
 	{
-		HAL_GPIO_TogglePin(OUTPUT_Y1_GPIO_Port, OUTPUT_Y1_Pin);
+		HAL_GPIO_WritePin(LED_Y0_GPIO_Port , LED_Y0_Pin , 0);
+		HAL_GPIO_WritePin(LED_Y1_GPIO_Port , LED_Y1_Pin , 1);
 	}
 }
 
