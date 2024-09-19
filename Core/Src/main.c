@@ -108,7 +108,7 @@ int main(void)
 	  {
 		  if(count >= 5)
 			  state = 1;
-		  HAL_GPIO_WritePin(LED_Y0_GPIO_Port , LED_Y0_Pin , 0);
+		  HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port , OUTPUT_Y1_Pin , 0);
 		  HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port , DEBUG_LED_Pin , 1);
 	  }
 	  else if(state == 1)
@@ -116,7 +116,7 @@ int main(void)
 		  if(count >= 3)
 			  state = 2;
 		  HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port , DEBUG_LED_Pin , 0);
-		  HAL_GPIO_WritePin(LED_Y0_GPIO_Port , LED_Y0_Pin , 1);
+		  HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port , OUTPUT_Y0_Pin , 1);
 	  }
 	  else if(state == 2)
 	  {
@@ -125,8 +125,8 @@ int main(void)
 			  state = 0;
 			  count = 0;
 		  }
-		  HAL_GPIO_WritePin(LED_Y0_GPIO_Port , LED_Y0_Pin , 0);
-		  HAL_GPIO_WritePin(LED_Y1_GPIO_Port , LED_Y1_Pin , 1);
+		  HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port , OUTPUT_Y0_Pin , 0);
+		  HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port , OUTPUT_Y1_Pin , 1);
 	  }
 	  count++;
 	  HAL_Delay(1000);
