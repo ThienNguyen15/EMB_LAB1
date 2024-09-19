@@ -182,7 +182,7 @@ void test_LedDebug()
 
 void test_LedY0()
 {
-	count_led_Y0 = (count_led_Y0+ 1) % 60;
+	count_led_Y0 = (count_led_Y0 + 1) % 60;
 	if(count_led_Y0 <= 20)
 		HAL_GPIO_WritePin(OUTPUT_Y0_GPIO_Port, OUTPUT_Y0_Pin, 1);
 	else
@@ -191,7 +191,7 @@ void test_LedY0()
 
 void test_LedY1()
 {
-	count_led_Y1 = (count_led_Y1+ 1) % 60;
+	count_led_Y1 = (count_led_Y1 + 1) % 60;
 	if(count_led_Y1 <= 50)
 		HAL_GPIO_WritePin(OUTPUT_Y1_GPIO_Port, OUTPUT_Y1_Pin, 1);
 	else

@@ -1134,7 +1134,7 @@ void test_LedY0()
 {
  80009b4:	b580      	push	{r7, lr}
  80009b6:	af00      	add	r7, sp, #0
-	count_led_Y0 = (count_led_Y0+ 1) % 60;
+	count_led_Y0 = (count_led_Y0 + 1) % 60;
  80009b8:	4b11      	ldr	r3, [pc, #68]	; (8000a00 <test_LedY0+0x4c>)
  80009ba:	781b      	ldrb	r3, [r3, #0]
  80009bc:	1c5a      	adds	r2, r3, #1
@@ -1185,7 +1185,7 @@ void test_LedY1()
 {
  8000a0c:	b580      	push	{r7, lr}
  8000a0e:	af00      	add	r7, sp, #0
-	count_led_Y1 = (count_led_Y1+ 1) % 60;
+	count_led_Y1 = (count_led_Y1 + 1) % 60;
  8000a10:	4b11      	ldr	r3, [pc, #68]	; (8000a58 <test_LedY1+0x4c>)
  8000a12:	781b      	ldrb	r3, [r3, #0]
  8000a14:	1c5a      	adds	r2, r3, #1
