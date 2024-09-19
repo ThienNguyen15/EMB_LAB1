@@ -39,13 +39,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_macro  0001f4f5  00000000  00000000  0002e018  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0000ba3e  00000000  00000000  0004d50d  2**0
+ 18 .debug_line   0000ba3a  00000000  00000000  0004d50d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000c630b  00000000  00000000  00058f4b  2**0
+ 19 .debug_str    000c630b  00000000  00000000  00058f47  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000053  00000000  00000000  0011f256  2**0
+ 20 .comment      00000053  00000000  00000000  0011f252  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00002f20  00000000  00000000  0011f2ac  2**2
+ 21 .debug_frame  00002f20  00000000  00000000  0011f2a8  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -400,7 +400,7 @@ int main(void)
 	  HAL_Delay(2000);
  80004e2:	f44f 60fa 	mov.w	r0, #2000	; 0x7d0
  80004e6:	f000 fb45 	bl	8000b74 <HAL_Delay>
-      HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 0);
+	  HAL_GPIO_WritePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin, 0);
  80004ea:	2200      	movs	r2, #0
  80004ec:	2110      	movs	r1, #16
  80004ee:	4804      	ldr	r0, [pc, #16]	; (8000500 <main+0x40>)
