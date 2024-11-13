@@ -319,13 +319,10 @@
 	<storageModule moduleId="refreshScope"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		<scannerConfigBuildInfo instanceId="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.1242564768;com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.1242564768.;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1358267674;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.25544834">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.826210736;com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.826210736.;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.627281928;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1008137135">
+		<scannerConfigBuildInfo instanceId="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.1989174432;com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.1989174432.;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1541761611;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1291914389">
 			<autodiscovery enabled="false" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.1482169163;com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.1482169163.;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1095172178;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1154374545">
+		<scannerConfigBuildInfo instanceId="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.1242564768;com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.release.1242564768.;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1358267674;com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.25544834">
 			<autodiscovery enabled="false" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 	</storageModule>
