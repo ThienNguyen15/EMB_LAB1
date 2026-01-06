@@ -1,1 +1,1 @@
-# EMB_LAB1
+# Embedded_Systems_LAB_1
